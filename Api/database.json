@@ -1,10 +1,18 @@
 {
-    "books": [
-        {
-            "Book": "jfd",
-            "Summary": "fdd",
-            "Pages": "fd",
-            "id": 1
-        }
-    ]
+  "books": [
+    {
+      "title": "fffff",
+      "summary": "fh",
+      "pages": "f",
+      "finished": "false",
+      "id": 1
+    },
+    {
+      "title": "d",
+      "summary": "DF",
+      "pages": "D",
+      "finished": "false",
+      "id": 2
+    }
+  ]
 }

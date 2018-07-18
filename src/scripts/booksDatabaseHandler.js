@@ -1,10 +1,12 @@
-const booksDatabaseHandler = Object.create({}, {
-    postNews: {
-        value: (newTaskObject) => {
+const $ = require("jquery");
+
+const bookData = Object.create({}, {
+    postBook: {
+        value: (newBook) => {
             return $.ajax({
                 url: "http://localhost:3000/books",
                 method: "POST",
-                data: newBookObject
+                data: newBook
             })
         }
     },
@@ -13,14 +15,52 @@ const booksDatabaseHandler = Object.create({}, {
             return $.ajax("http://localhost:3000/books")
         }
     },
-    deleteBooks: {
+    getBook: {
         value: (id) => {
             return $.ajax({
                 url: `http://localhost:3000/books/${id}`,
-                method: "DELETE"
+                method: "GET"
+            })
+        }
+    },
+    putBook: {
+        value: (updateBook) => {
+            console.log("database", updateBook)
+            return $.ajax({
+                url: `http://localhost:3000/books/${updateBook.id}`,
+                method: "PUT",
+                data: updateBook
+            })
+        }
+    },
+    readBook: {
+        value: function (editedId) {
+            return $.ajax({
+                url: `http://localhost:3000/books/${editedId}`,
+                type: "PATCH",
+                data: {
+                    read: true
+                }
+            })
+        }
+    },
+    editBook:{
+        value: (newBook) => {
+            return $.ajax({
+                url: `http://localhost:3000/books/${id}`,
+                type: "PATCH",
+                data: newBook
+            })
+        }
+    },
+    deleteBook: {
+        value: (id) => {
+            return $.ajax({
+                url: `http://localhost:3000/books/${id}`,
+                method: "DELETE",
             })
         }
     }
-});
-jkhjkhlkhk
-// module.exports = BooksDataa
+})
+
+module.exports = bookData
