@@ -29,7 +29,11 @@ const bookData = Object.create({}, {
             return $.ajax({
                 url: `http://localhost:3000/books/${updateBook.id}`,
                 method: "PUT",
-                data: updateBook
+                data: {
+                    title: updateBook.title,
+                    summary: updateBook.summary,
+                    pages: updateBook.pages,
+                }
             })
         }
     },
@@ -44,7 +48,7 @@ const bookData = Object.create({}, {
             })
         }
     },
-    editBook:{
+    editBook: {
         value: (newBook) => {
             return $.ajax({
                 url: `http://localhost:3000/books/${id}`,
