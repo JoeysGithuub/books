@@ -1,4 +1,21 @@
 {
-  "books": [],
-  "users": []
+  "books": [
+    {
+      "title": "gjdkqjf",
+      "summary": "fj",
+      "pages": "fj",
+      "id": 1,
+      "read": "true"
+    }
+  ],
+  "users": [
+    {
+      "name": "df",
+      "id": 1
+    },
+    {
+      "name": "Joe Black",
+      "id": 2
+    }
+  ]
 }

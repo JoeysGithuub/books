@@ -26,23 +26,38 @@ $("#userShelf").on("click", "#add-buttt", () => {
         })
 })
 
-$(document).ready(function() {
-    $.getJSON("./database.json", function(obj) {
-        $.each(obj.users, function(key, value) {
-            $("#dropDownUsers").append("<option>" + value.newUser + "</option>");
-        });
-    });
-});
+function dropDown() {
+    //Build an array containing users.
+    const newUser = []
+    const moreUsers = document.getElementById("moreUsers");
+
+    //Add the Options to the DropDownList.
+    for (const i = 0; i < newUser.length; i++) {
+        const option = document.createElement("OPTION");
+
+        //Set Customer Name in Text part.
+        option.innerHTML = newUser[i].Name;
+
+    }
+}
+
+// $(document).ready(function() {
+//     $.getJSON("./database.json", function(obj) {
+//         $.each(obj.users, function(key, value) {
+//             $("#dropDownUsers").append("<option>" + value.newUser + "</option>");
+//         });
+//     });
+// });
 
 
-$("#userShelf").on("click", ".delete-buttt", () => {
-    const userID = $(event.target).parent().attr("id")
-    userData.deleteUser(userID)
-        .then(() => {
-            return userData.getAllUsers()
-        })
-        .then((userArray) => {
-            userPrinter.printUsers(userArray)
-        })
-})
+// $("#userShelf").on("click", ".delete-buttt", () => {
+//     const userID = $(event.target).parent().attr("id")
+//     userData.deleteUser(userID)
+//         .then(() => {
+//             return userData.getAllUsers()
+//         })
+//         .then((userArray) => {
+//             userPrinter.printUsers(userArray)
+//         })
+// })
 
