@@ -7,16 +7,12 @@ const $ = require("jquery")
 
 $("#bookShelf").on("click", "#add-butt", () => {
     const bookTitleInput = $("#bookTitle-input").val();
-    console.log(bookTitleInput)
     const bookSummaryInput = $("#bookSummary-input").val();
-    console.log(bookSummaryInput)
     const bookPagesInput = $("#bookPages-input").val();
-    console.log(bookPagesInput)
     const newBook = {
         title: bookTitleInput,
         summary: bookSummaryInput,
         pages: bookPagesInput,
-        finished: false
     }
 
     console.log(bookData);
