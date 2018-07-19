@@ -11,10 +11,14 @@ const userData = Object.create({}, {
         }
     },
     getAllUsers: {
-        value: () => {
-            return $.ajax("http://localhost:3000/users")
-        }
-    },
+        value: (name) => {
+            return $.ajax({
+            url: "http://localhost:3000/users",
+            method: "GET",
+            data: name
+        })
+    }
+},
     deleteUser: {
         value: (id) => {
             return $.ajax({
