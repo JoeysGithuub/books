@@ -26,15 +26,16 @@ $("#userShelf").on("click", "#add-buttt", () => {
         })
 })
 
-const $select = $("#users")
+const $select = $("#user")
 
-$.getJSON("http://localhost:3000/users", function(data) {
+$.getJSON("database.json", function (data) {
     $select.html("")
 
-    for(let i = 0; i < data["users"]; i++) {
-        $select.append("<option id=" + data["users"][i]["id"] + ">" + data["users"][i]["name"] + "</option>")
-    }
+    $.each(data.users, function (key, val) {
+        $select.append("<option id=" + val.id + " + val.name + </option>")
+    })
 })
+
 
 // $("#add-buttt").on("click", function () {
 //     // console.log("heh")
