@@ -7,7 +7,7 @@ userBuild.buildUserInfo()
 const printOnPageLoad = () => {
     $.ajax("http://localhost:3000/users")
     .then((user) => {
-        userPrinter.printUsers(users)
+        userPrinter.printUsers(user)
     })
 }
 

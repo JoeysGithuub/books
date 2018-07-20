@@ -8,7 +8,7 @@ const printer = Object.create({}, {
             userArray.forEach((user) => {
                 const $userDiv = $("<div>").attr("id", user.id)
                 $("<h4>").text(user.name).appendTo($userDiv);
-                $("<button>").text("Delete").addClass(".delete-buttt").appendTo($userDiv);
+                // $("<button>").text("Delete").addClass(".delete-buttt").appendTo($userDiv);
                 $($userDiv).appendTo("#userShelf");
             })
         }

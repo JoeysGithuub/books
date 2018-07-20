@@ -2,120 +2,109 @@ const userData = require("./userDatabaseHandler");
 const userPrinter = require("./userPrint");
 const $ = require("jquery")
 
-// let userID = "";
+// const userID = "";
 
-// console.log($("#add-buttt"))
+// const userNames = () => {
+//     const nameInput = $("#userName-input").val();
+//     const newUser = {
+//         name: nameInput
+//     }
+// }
 
-$("#userShelf").on("click", "#add-buttt", () => {
-    // console.log("ere")
-    const nameInput = $("#userName-input").val();
+$("#damn").on("click", "#add-buttt", () => {
+    console.log("ere")
+    const userNameInput = $("#userName-input").val();
     const newUser = {
-        name: nameInput
+        name: userNameInput
     }
-    // console.log($("#add-buttt"))
+    console.log(userData)
 
     userData.postUser(newUser)
         .then((userInfo) => {
-            userID = userInfo.id
             $("#userName-input").val("").attr("placeholder", "Username")
-            console.log(userInfo)
-            return userData.getAllUsers()
+            return userData.getAllUsers(newUser)
         })
         .then(userArray => {
             userPrinter.printUsers(userArray)
         })
 })
 
-const $select = $("#user")
+// $.ajax({
+//     type: "POST",
+//     url:   "http://localhost:3000/users",
+//     success: function(data)
+//     {
+//         helpers.buildDropList(
+//             jQuery.parseJSON(data),
+//             $("#dropList"),
+//             "Select an option"
+//         );
+//     }
+// });
 
-$.getJSON("database.json", function (data) {
-    $select.html("")
+// const helpers =
+// {
+//     buildDropList: function(result, dropList, emptyMessage)
+//     {
+//         // Remove current options
+//         dropList.html("");
+//         // Add the empty option with the empty message
+//         dropList.append("<option value ="">" + emptyMessage + "</option>")
+//         // Check result is not empty
+//         if(result !== "")
+//         {
+//             // Loop through each of the results and append the option to the dropList
+//             $.each(result, function(k, v) {
+//                 dropList.append('<option value="' + v.id + '">' + v.name + '</option>');
+//             });
+//         }
+//     }
+// }
 
-    $.each(data.users, function (key, val) {
-        $select.append("<option id=" + val.id + " + val.name + </option>")
-    })
-})
 
+// let userID = "";
+
+// console.log($("#add-buttt"))
+
+// const userNames = () => {
+//     const nameInput = $("#userName-input").val();
+//     const newUser = {
+//         name: nameInput
+//     }
+// }
+
+// $("#userShelf").on("click", "#add-buttt", () => {
+//     // console.log("ere")
+//     const nameInput = $("#userName-input").val();
+//     const newUser = {
+//         name: nameInput
+//     }
+//         userData.postUser(newUser)
+//     .then((userInfo) => {
+//         userID = userInfo.id
+//         $("#userName-input").val("").attr("placeholder", "Username")
+//         return userData.getAllUsers(newUser.id)
+//     })
+//     .then(userArray => {
+//         userPrinter.printUsers(userArray)
+//     })
+// })
+
+// userData.postUser(newUser)
+//     .then((userInfo) => {
+//         userID = userInfo.id
+//         $("#userName-input").val("").attr("placeholder", "Username")
+//         return userData.getAllUsers(newUser.id)
+//     })
+//     .then(userArray => {
+//         userPrinter.printUsers(userArray)
+//     })
 
 // $("#add-buttt").on("click", function () {
 //     // console.log("heh")
 //     $.ajax({
 //         type: "GET",
 //         url: "http://localhost:3000/users",
-//         dataType: "json",
-//         success: function(data) {
-//             $.each(data.users, function(i, obj) {
-//                 const userFo= "<option value="+obj.name+">"+obj.id+"</option>"
-//                 $(userFo).appendTo("#sel")
-//             //  $("#sel").append($("<option/>").attr("value", option.id).text(option.name));
-//             })
-//         }
+//         dataType: "json"
 //     })
 // })
-
-// $(function() {
-//     const users = [
-//         {
-//         "name": "df",
-//         "id": 1 },
-//     {
-//         "name": "Joe",
-//         "id": 2 }
-//     ];
-// $("#userShelf").on("click", "#add-buttt", () => {
-//     $.getJSON("http://localhost:3000/users?name=${name}",
-//         $.each(users, function (i, option) {
-//             $("#sel").append($("<option/>").attr("value", option.id).text(option.name));
-//         }))
-//     })
-// let dropDown = $("#locality-dropDown");
-
-// dropDown.empty();
-
-// // dropDown.append("<option selected="true" disabled>Choose State/Province</option>");
-// dropDown.prop("selectedIndex", 0);
-
-// // const url = 'https://api.myjson.com/bins/7xq2x';
-
-// // Populate dropDown with list of provinces
-// $.getJSON(url, function (data) {
-//     $.each(data, function (key, entry) {
-//         dropDown.append($("<option></option>").attr("value", entry.abbreviation).text(entry.name));
-//     })
-// });
-
-
-// //  dropDown.onclick() => {
-// btnGenerate.onclick = dropDown() {
-//     //Build an array containing users.
-//     const newUser = []
-//     const moreUsers = document.getElementById("moreUsers");
-
-//     //Add the Options to the DropDownList.
-//     for (const i = 0; i < newUser.length; i++) {
-//         const option = document.createElement("OPTION");
-
-//         //Set Customer Name in Text part.
-//         option.innerHTML = newUser[i].Name;
-
-//     }
-// }
-
-// $(document).ready(function() {
-//     $.getJSON("./database.json", function(obj) {
-//         $.each(obj.users, function(key, value) {
-//             $("#dropDownUsers").append("<option>" + value.newUser + "</option>");
-//         });
-//     });
-// });
-
-
-// $("#userShelf").on("click", ".delete-buttt", () => {
-//     const userID = $(event.target).parent().attr("id")
-//     userData.deleteUser(userID)
-//         .then(() => {
-//             return userData.getAllUsers()
-//         })
-//         .then((userArray) => {
-//             userPrinter.printUsers(userArray)
-//        })

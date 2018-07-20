@@ -13,6 +13,8 @@ const bookData = Object.create({}, {
     getAllBooks: {
         value: () => {
             return $.ajax("http://localhost:3000/books")
+            method: "GET"
+
         }
     },
     getBook: {
