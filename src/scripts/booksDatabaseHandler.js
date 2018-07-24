@@ -3,6 +3,7 @@ const $ = require("jquery");
 const bookData = Object.create({}, {
     postBook: {
         value: (newBook) => {
+            console.log(newBook)
             return $.ajax({
                 url: "http://localhost:3000/books",
                 method: "POST",
@@ -13,8 +14,6 @@ const bookData = Object.create({}, {
     getAllBooks: {
         value: () => {
             return $.ajax("http://localhost:3000/books")
-            method: "GET"
-
         }
     },
     getBook: {
@@ -27,7 +26,6 @@ const bookData = Object.create({}, {
     },
     putBook: {
         value: (updateBook) => {
-            console.log("database", updateBook)
             return $.ajax({
                 url: `http://localhost:3000/books/${updateBook.id}`,
                 method: "PUT",
@@ -53,7 +51,7 @@ const bookData = Object.create({}, {
     editBook: {
         value: (newBook) => {
             return $.ajax({
-                url: `http://localhost:3000/books/${id}`,
+                url: `http://localhost:3000/books/${newBook.id}`,
                 type: "PATCH",
                 data: newBook
             })

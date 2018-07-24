@@ -21,13 +21,28 @@ $("#damn").on("click", "#add-buttt", () => {
 
     userData.postUser(newUser)
         .then((userInfo) => {
+            console.log(userInfo)
             $("#userName-input").val("").attr("placeholder", "Username")
-            return userData.getAllUsers(newUser)
+            return userData.getAllUsers()
         })
         .then(userArray => {
+            console.log(userArray)
             userPrinter.printUsers(userArray)
         })
 })
+
+// let updateUserID;
+
+// $("#damn").on("click", "#add-buttt", () => {
+//     updateUserID = $(event.target).parent().attr("id")
+//     // console.log("#updateBookID")
+//     userData.getAllUsers(updateUserID)
+//         .then((response) => {
+//             console.log(response)
+//             const userNameInput = $("#userName-input").val();
+//         })
+// })
+
 
 // $.ajax({
 //     type: "POST",

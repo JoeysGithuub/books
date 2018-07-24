@@ -1,37 +1,21 @@
 const $ = require("jquery");
 
 const userData = Object.create({}, {
-        postUser: {
-            value: (newUser) => {
-                return $.ajax({
-                    url: "http://localhost:3000/books",
-                    method: "POST",
-                    data: newUser
-                })
-            }
-        },
-    getAllUsers: {
-        value: (name) => {
+    postUser: {
+        value: (newUser) => {
+            console.log(newUser)
             return $.ajax({
-            url: "http://localhost:3000/users",
-            method: "GET",
-            data: name
-        })
-    }
-},
-    deleteUser: {
-        value: (id) => {
-            return $.ajax({
-                url: `http://localhost:3000/users/${id}`,
-                method: "DELETE",
+                url: "http://localhost:3000/users",
+                method: "POST",
+                data: newUser
             })
         }
     },
-    getUserByName: {
-        value: (name) => {
-            console.log(name)
+    getAllUsers: {
+        value: () => {
             return $.ajax({
-                url: `http://localhost:3000/users?name=${name}`
+                url: "http://localhost:3000/users",
+                method: "GET"
             })
         }
     }

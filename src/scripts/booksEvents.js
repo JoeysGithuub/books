@@ -55,7 +55,7 @@ $("#book-box").on("click", ".edit-butt", () => {
     // console.log("#updateBookID")
     bookData.getBook(updateBookID)
         .then((response) => {
-            console.log("response", response)
+            console.log(response)
             $("#bookTitle-input").val(response.title)
             $("#bookSummary-input").val(response.summary)
             $("#bookPages-input").val(response.pages)
@@ -70,33 +70,39 @@ $("#book-box").on("click", ".update-butt", () => {
     const bookSummaryInput = $("#bookSummary-input").val();
     const bookPagesInput = $("#bookPages-input").val();
     const updateBook = {
-      id: updateBookID,
-      title: bookTitleInput,
-      summary: bookSummaryInput,
-      pages: bookPagesInput,
+        id: updateBookID,
+        title: bookTitleInput,
+        summary: bookSummaryInput,
+        pages: bookPagesInput,
     }
     bookData.putBook(updateBook)
-    .then(() => {
-        return bookData.getAllBooks()
-    })
-    .then((bookArray) => {
-      bookPrinter.printBooks(bookArray)
-    })
-  })
+        .then(() => {
+            // $("#bookTitle-input").val(response.title)
+            // $("#bookSummary-input").val(response.summary)
+            // $("#bookPages-input").val(response.pages)
+            return bookData.getAllBooks()
+        })
+        .then((bookArray) => {
+            bookPrinter.printBooks(bookArray)
+        })
+    // .then((bookData) => {
+    //     bookPrinter.printBooks(userInfo)
+    //     return bookData.getAllBooks()
+    // })
+
 
 //   console.log($(".update-butt"))
 
   //delete button function
 
 $("#book-box").on("click", ".delete-butt", () => {
-    const bookID = $(event.target).parent().attr("id")
-    bookData.deleteBook(bookID)
-        .then(() => {
-            return bookData.getAllBooks()
+            const bookID = $(event.target).parent().attr("id")
+            bookData.deleteBook(bookID)
+                .then(() => {
+                    return bookData.getAllBooks()
+                })
+                .then((bookArray) => {
+                    bookPrinter.printBooks(bookArray)
+                })
         })
-        .then((bookArray) => {
-            bookPrinter.printBooks(bookArray)
-        })
-})
-
-
+    })
